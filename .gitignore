@@ -1,0 +1,5 @@
+.vscode/
+node_modules/
+package-lock.json
+wp-solo/assets/
+.DS_Store
