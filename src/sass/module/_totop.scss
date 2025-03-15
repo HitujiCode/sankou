@@ -1,0 +1,14 @@
+@use "global" as *;
+
+.totop {
+  width: rem(48);
+  aspect-ratio: 1/1;
+
+  @include mq("md") {
+    width: rem(77);
+  }
+}
+
+.totop img {
+  object-fit: contain;
+}

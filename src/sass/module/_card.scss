@@ -1,0 +1,64 @@
+@use "global" as *;
+
+.card {
+  position: relative;
+  display: grid;
+  gap: rem(25);
+  background-color: var(--white);
+  border-radius: rem(20);
+  padding-block: rem(38) rem(32);
+  padding-inline: rem(29);
+}
+
+.card::before {
+  content: counter(serviceNum, decimal-leading-zero);
+  position: absolute;
+  top: rem(-52);
+  left: rem(-15);
+  font-size: rem(80);
+  font-weight: var(--font-semi-bold);
+  font-family: var(--en-font);
+  font-style: italic;
+  color: transparent;
+  line-height: calc(97/80);
+  -webkit-text-stroke: 1px var(--black);
+}
+
+.card__title {
+  font-size: rem(26);
+  font-weight: var(--font-bold);
+  color: var(--purple);
+  line-height: calc(49/25);
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: calc(12/26*1em);
+  text-decoration-thickness: rem(2);
+
+  @include mq("md") {
+    font-size: rem(26);
+    line-height: calc(49/26);
+  }
+}
+
+.card__title--small {
+  @include mq("md") {
+    font-size: rem(25);
+    line-height: calc(49/25);
+  }
+}
+
+.card__title span {
+  // box-decoration-break: clone;
+  // border-bottom: rem(2) solid;
+}
+
+.card__text {
+  font-size: rem(14);
+  color: var(--dark-gray);
+  line-height: calc(30/14);
+  letter-spacing: 0.05em;
+
+  @include mq("md") {
+    font-size: rem(16);
+  }
+}

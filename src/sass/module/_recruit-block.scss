@@ -1,0 +1,53 @@
+@use "global" as *;
+
+.recruit-block {
+  padding-block: rem(19);
+  padding-inline: rem(23) rem(16);
+  border-radius: rem(12);
+  background-color: var(--white);
+
+  @include mq("md") {
+    padding-block: rem(24) rem(64);
+    padding-inline: rem(35) rem(32);
+  }
+}
+
+.recruit-block__title {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr rem(13);
+  align-items: center;
+  gap: 0.5em;
+  font-size: rem(16);
+  font-weight: var(--font-bold);
+  line-height: calc(32/16);
+  letter-spacing: 0.05em;
+
+  @include mq("md") {
+    grid-template-columns: 1fr rem(18);
+    font-size: rem(20);
+    line-height: calc(28/20);
+  }
+}
+
+.recruit-block__title::before,
+.recruit-block__title::after {
+  content: "";
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  height: rem(2);
+  background-color: var(--purple);
+}
+
+.recruit-block__title::after {
+  transform: rotate(90deg);
+}
+
+.recruit-block__content {}
+
+.recruit-block__detail {}
+
+.recruit-block__detail-term {}
+
+.recruit-block__detail-desc {}

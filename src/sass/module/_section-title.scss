@@ -1,0 +1,62 @@
+@use "global" as *;
+
+.section-title {
+  display: grid;
+  place-content: center;
+  gap: rem(8);
+  text-align: center;
+
+  @include mq("md") {
+    gap: rem(18);
+  }
+}
+
+.section-title--descender {
+  text-align: left;
+  gap: rem(2);
+
+  @include mq("md") {
+    gap: rem(4);
+  }
+}
+
+.section-title__title {
+  // font-size: rem(40);
+  // font-weight: var(--font-bold);
+  // font-family: var(--en-font);
+  // font-style: italic;
+  // color: transparent;
+  // line-height: 1;
+  // background-image: var(--gradient-main);
+  // background-clip: text;
+
+  @include mq("md") {
+    // font-size: rem(55);
+  }
+}
+
+.section-title__en {
+  --_width-sp: 148;
+  width: calc(var(--_width-sp)/16*1rem);
+
+  @include mq("md") {
+    --_width-pc: 246;
+    width: calc(var(--_width-pc)/16*1rem);
+  }
+}
+
+.section-title__en--screen {
+  mix-blend-mode: screen;
+}
+
+.section-title__en img {
+  object-fit: contain;
+}
+
+.section-title__ja {
+  font-size: rem(13);
+  font-weight: var(--font-bold);
+  font-family: var(--base-font);
+  color: var(--black);
+  line-height: calc(19/13);
+}

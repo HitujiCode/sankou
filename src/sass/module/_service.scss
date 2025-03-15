@@ -1,0 +1,46 @@
+@use "global" as *;
+
+.service {
+  position: relative;
+  overflow-x: clip;
+}
+
+.service__accent {
+  position: absolute;
+  top: 27.5%;
+  left: rem(-16);
+  writing-mode: sideways-lr;
+  mix-blend-mode: soft-light;
+}
+
+.service__inner.inner {}
+
+.service__container {
+  position: relative;
+}
+
+.service__title {}
+
+.service__text {
+  margin-top: rem(26);
+  font-size: rem(14);
+  line-height: calc(30/14);
+  letter-spacing: 0.05em;
+
+  @include mq("md") {
+    font-size: rem(16);
+  }
+}
+
+.service__list {
+  counter-reset: serviceNum;
+  margin-top: rem(70);
+  padding-inline: rem(30) rem(15);
+  display: grid;
+  gap: rem(64);
+}
+
+.service__item {
+  counter-increment: serviceNum;
+}
+

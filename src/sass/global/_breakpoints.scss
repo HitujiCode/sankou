@@ -9,35 +9,38 @@ $mediaquerys: (
   xl: "screen"
 );
 
-@if $startFrom == sp {
+@if $startFrom ==sp {
   //スマホファースト
   $breakpoints: (
     sm: 600,
     md: 768,
-    lg: 1024,
+    lg: 1200,
+    // lg: 1024,
     xl: 1440
   );
 
-  //メディアクエリー
-  $mediaquerys: (
-    sm: "screen and (min-width: #{map-get($breakpoints,'sm')}px)",
-    md: "screen and (min-width: #{map-get($breakpoints,'md')}px)",
-    lg: "screen and (min-width: #{map-get($breakpoints,'lg')}px)",
-    xl: "screen and (min-width: #{map-get($breakpoints,'xl')}px)"
-  );
-} @else {
+//メディアクエリー
+$mediaquerys: (
+  sm: "screen and (min-width: #{map-get($breakpoints,'sm')}px)",
+  md: "screen and (min-width: #{map-get($breakpoints,'md')}px)",
+  lg: "screen and (min-width: #{map-get($breakpoints,'lg')}px)",
+  xl: "screen and (min-width: #{map-get($breakpoints,'xl')}px)"
+);
+}
+
+@else {
   $breakpoints: (
     xl: 1440,
     lg: 1023,
     md: 767,
     sm: 600
   );
-  $mediaquerys: (
-    sm: "screen and (max-width: #{map-get($breakpoints,'sm')}px)",
-    md: "screen and (max-width: #{map-get($breakpoints,'md')}px)",
-    lg: "screen and (max-width: #{map-get($breakpoints,'lg')}px)",
-    xl: "screen and (min-width: #{map-get($breakpoints,'xl')}px)"
-  );
+$mediaquerys: (
+  sm: "screen and (max-width: #{map-get($breakpoints,'sm')}px)",
+  md: "screen and (max-width: #{map-get($breakpoints,'md')}px)",
+  lg: "screen and (max-width: #{map-get($breakpoints,'lg')}px)",
+  xl: "screen and (min-width: #{map-get($breakpoints,'xl')}px)"
+);
 }
 
 // @include mq(){}で書くとブレークポイントが反映される（初期値はmd）
@@ -47,33 +50,40 @@ $mediaquerys: (
   }
 }
 
-@if $startFrom == sp {
+@if $startFrom ==sp {
+
   //pcで表示
-  .pc {
+  .pc-only {
     display: none;
+
     @include mq("md") {
       display: block;
     }
   }
 
   //モバイルのみ表示
-  .sp {
+  .sp-only {
     @include mq("md") {
       display: none;
     }
   }
-} @else {
+}
+
+@else {
+
   //pcで表示
-  .pc {
+  .pc-only {
     display: block;
+
     @include mq("md") {
       display: none;
     }
   }
 
   //モバイルのみ表示
-  .sp {
+  .sp-only {
     display: none;
+
     @include mq("md") {
       display: block;
     }

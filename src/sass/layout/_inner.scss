@@ -2,24 +2,25 @@
 
 @if $startFrom ==sp {
   .inner {
-    padding-inline: var(--padding-sp);
+    max-width: 600px;
+    padding-inline: $padding-sp;
     margin-inline: auto;
 
     @include mq("md") {
-      max-width: calc(var(--inner) + strip-unit(var(--padding-pc)) * 2);
-      padding-inline: var(--padding-pc);
+      max-width: $inner + strip-unit($padding-pc) * 2;
+      padding-inline: $padding-pc;
     }
   }
 }
 
 @else {
   .inner {
-    padding-inline: var(--padding-pc);
+    max-width: $inner + strip-unit($padding-pc) * 2;
+    padding-inline: $padding-pc;
     margin-inline: auto;
-    max-width: calc(var(--inner) + strip-unit(var(--padding-pc)) * 2);
 
     @include mq("md") {
-      padding-inline: var(--padding-sp);
+      padding-inline: $padding-sp;
     }
   }
 }

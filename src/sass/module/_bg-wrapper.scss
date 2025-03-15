@@ -1,0 +1,16 @@
+@use "global" as *;
+
+.bg-wrapper {
+  position: relative;
+}
+
+.bg-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url(../images/bg-main.webp);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
+}

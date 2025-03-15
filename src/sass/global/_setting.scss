@@ -1,72 +1,63 @@
 @use "sass:math";
+@use "breakpoints" as *;
 
 ////////////////////
 // インナー幅と余白設定
 ////////////////////
-:root {
-  --inner: 960px;
-  --padding-pc: 25px;
-  --padding-sp: 20px;
-}
+$inner: 1100px;
+$padding-pc: 25px;
+$padding-sp: 20px;
 
 ////////////////////
 // フォント設定
 ////////////////////
-@font-face {
-  font-display: swap;
-  font-family: "Noto Serif JP";
-  font-weight: 400;
-  font-style: normal;
-  src: url("../fonts/NotoSerifJP-Regular.woff") format("woff");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Noto Serif JP";
-  font-weight: 500;
-  font-style: normal;
-  src: url("../fonts/NotoSerifJP-Medium.woff") format("woff");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Noto Serif JP";
-  font-weight: 700;
-  font-style: normal;
-  src: url("../fonts/NotoSerifJP-Bold.woff") format("woff");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Lora";
-  font-weight: 400;
-  font-style: normal;
-  src: url("../fonts/Lora-Regular.woff") format("woff");
-}
-
 :root {
-  --base-font: "Noto Serif JP", sans-serif;
-  --en-font: "Lora", sans-serif;
-  --regular: 400;
-  --medium: 500;
-  --semi-bold: 600;
-  --bold: 700;
+  --base-font: "Noto Sans JP", sans-serif;
+  --en-font: "Raleway", sans-serif;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  --font-bold: 700;
 }
 
 ////////////////////
 // 色の指定
 ////////////////////
 :root {
-  --black: #333;
+  --black: #000;
   --white: #fff;
-  --base: #5d5d5d;
-  --blue: #391e88;
+  --dark-gray: #333;
+  --purple: #411B99;
+  --green: #0CA896;
+  --gray: #C9C9C9;
+  --light-gray: #BABABA;
+  --gradient-main: linear-gradient(to right, #431598, #209BA5);
+  --gradient-header: linear-gradient(98deg, #f0ecfa 0%, #eff7ff 33.5%, #f0f6f7 69.46%, #f1edfc 100%);
+}
+
+////////////////////
+// z-indexの指定
+////////////////////
+:root {
+  --z-index-header: 100;
 }
 
 ////////////////////
 // グローバルスタイル
 ////////////////////
+:root {
+  --header-height: calc(65/16*1rem);
+
+  @include mq("md") {
+    --header-height: calc(90/16*1rem);
+  }
+}
+
 body {
   font-family: var(--base-font);
-  color: var(--base);
+  color: var(--black);
+}
+
+body.is-noscroll {
+  overflow: hidden;
 }

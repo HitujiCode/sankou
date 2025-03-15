@@ -19,8 +19,8 @@ const terser = require("gulp-terser"); // JavaScriptのミニファイ用モジ�
 // プロジェクトの設定
 const path = require("path");
 const os = require("os");
-const projectName = "wp-solo";
-const wpThemeName = "wp-solo";
+const projectName = "sankou";
+const wpThemeName = "sankou";
 const baseFolder =
   process.env.BASE_FOLDER ||
   path.join(
@@ -34,8 +34,6 @@ const baseFolder =
     wpThemeName
   );
 
-console.log(baseFolder);
-
 // 入力先
 const srcPath = {
   css: "./src/sass/**/*.scss",
@@ -48,7 +46,7 @@ const srcPath = {
 
 // 出力先
 const destPath = {
-  all: `./${projectName}/**/*`,
+  all: `./${projectName}/assets/**/*`,
   css: `./${projectName}/assets/css/`,
   js: `./${projectName}/assets/js/`,
   img: `./${projectName}/assets/images/`,
@@ -174,7 +172,7 @@ const jsMinify = () => {
 
 const browserSyncOption = {
   notify: false,
-  proxy: `http://wp-solo.local`,
+  proxy: `http://sankou.local`,
 };
 
 const browserSyncFunc = () => {

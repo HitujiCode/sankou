@@ -1,259 +1,435 @@
-
 @use "global" as *;
-@use "sass:math";
-// remへの計算式（16pxを基準としている。10pxを基準とする場合は16を10に変更する）
-@function rem($pixels) {
-  @return math.div($pixels, 16) * 1rem;
+
+.form {
+  font-size: rem(18);
+  line-height: calc(32/18);
+  display: grid;
+
+  @include mq("md") {}
 }
-/*デフォルト色の指定*/
-$border-cr-default: #AAAAAA; //デフォルト時のボーダーの色
-$border-cr: #391E88; //inputのhover or focus時の色
-$back-cr: #fff;//input（テキスト系）の背景色
 
-/*サイズ等の指定*/
-$fz: rem(16);//入力するときのfont-size
-$padding-und: rem(10);//paddingの指定（上下） inputの内側の余白で使う
-$padding-lnr: rem(10);//paddingの指定（左右） inputの内側の余白で使う
-$border-r: rem(6);//border-radius（テキスト系）
+.form__wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid var(--main);
 
-/*ボタン系の指定*/
-$fz-btn: rem(14);//送信ボタンのfont-size
-$back-cr-btn: transparent linear-gradient(90deg, #7633a4 0%, #250d65 100%) 0% 0% no-repeat padding-box;//ボタンの背景色
-$font-cr-btn: white;//ボタンのフォントカラー
-$padding-und-btn: rem(20);//paddingの指定（上下） btnの内側の余白で使う
-$padding-lnr-btn: rem(72);//paddingの指定（左右） btnの内側の余白で使う
-$border-r-btn: rem(50);
-
-/*ラジオボタンの指定*/
-$radio-fz: rem(12);//フォントサイズ
-$radio-size: rem(18);//外枠の幅高さ
-$radio-bg-cr: #fff;//外枠の背景色
-$radio-border-cr: #707070;//外枠の色
-$radio-size-inner: rem(12);//チェックマーク幅高さ
-$radio-bg-cr-inner: #391E88;//チェックマークの背景色
-$radio-space: rem(10);//チェックマークと文字の距離
-$radio-space-betweenRadio: rem(35);//ラジオボタンの間の距離
-
-/*チェックボックスの指定*/
-$check-fz: rem(14);//フォントサイズ
-$check-size: rem(20);//外枠の幅高さ
-$check-bg-cr: #fff;//外枠の背景色
-$check-border-cr: #f00;//外枠の色
-$check-bg-cr-inner: #f00;//チェックマークの背景色
-$check-space: rem(5);//チェックマークと文字の距離
-$check-space-betweenRadio: rem(20);//ラジオボタンの間の距離
-$check-weight: 4px;//チェックマークの線の太さ(px)
-
-/*テキストエリアの指定*/
-$textarea-height: rem(255);
-
-[type="text"],
-[type="search"],
-[type="tel"],
-[type="url"],
-[type="email"],
-[type="password"],
-[type="date"],
-textarea {
-	/*↓リセットCSS */
-	border: none;
-	border-radius: 0;
-	background-image: none;
-	font-family: inherit;
-	/*↓カスタム */
-  margin-top: rem(10);
-	font-size: $fz;
-	padding: $padding-und $padding-lnr;
-	width: 100%;
-  max-width: rem(300);
-	background: $back-cr;
-	border: 1px solid $border-cr-default;
-	border-radius: $border-r;
-	/*↓↓↓↓不要ならコメントアウト or 削除 */
-	// &:hover {  //ホバーしたときの色
-	// 	border: 1px solid $border-cr;
-	// }
-	/*↓↓選択されているときの色*/
-	&:focus {
-		border: 1px solid $border-cr;
-	}
+  @include mq("md") {
+    grid-template-columns: calc(270/1000*100%) 1fr;
+  }
 }
-[type="tel"] {
-  max-width: rem(200);
+
+.form__wrap:not(:first-child) {
+  margin-top: -1px;
+}
+
+.form__wrap:not(:last-child) {
+  @include mq("md") {
+    border-bottom: initial;
+  }
+}
+
+.form__wrap:has(input),
+.form__wrap:has(select) {
+  @include mq("md") {
+    align-items: center;
+  }
+}
+
+.form__term {
+  background-color: var(--bg-light-green);
+  font-weight: var(--bold);
+  padding: rem(20);
+
+  @include mq("md") {
+    border-right: 1px solid var(--main);
+    height: 100%;
+    padding: rem(30);
+  }
+}
+
+.form__term:not(:first-of-type) {
+  margin-top: -1px;
+
+  @include mq("md") {
+    margin-top: initial;
+  }
+}
+
+.form__term label {
+  display: grid;
+  grid-template-columns: repeat(2, fit-content(100%));
+  align-items: center;
+  gap: rem(15);
+
+  @include mq("md") {
+    height: inherit;
+  }
+}
+
+.form__required {
+  background-color: var(--red);
+  border-radius: rem(5);
+  font-size: rem(14);
+  font-weight: var(--regular);
+  color: var(--white);
+  line-height: calc(30/14);
+  padding-inline: rem(10);
+}
+
+.form__input {
+  padding: rem(20);
+
+  @include mq("md") {
+    padding: rem(30);
+  }
+}
+
+%base-input {
   width: 100%;
+  background-color: var(--light-gray2);
+  border-radius: rem(10);
+  border: 1px solid var(--gray4);
+  padding-block: rem(13);
+  padding-inline: rem(20);
+  font-size: rem(16);
+  font-weight: var(--medium);
+  line-height: calc(32/16);
+
+  @include mq("lg") {
+    padding-inline: rem(20);
+  }
 }
-button,
-[type="button"],
-[type="submit"] {
-	/*↓リセットCSS */
-	margin: 0;
-	background-image: none;
-	width: auto;
-	display: inline-block;
-	text-decoration: none;
-	border: none;
-	border-radius: 0;
-	/*↓カスタム */
-	padding: $padding-und-btn $padding-lnr-btn;
-	background: $back-cr-btn;
-	color: $font-cr-btn;
-	font-size: $fz-btn;
-	cursor: pointer;
-	transition: 0.3s ease;
-  border-radius: $border-r-btn;
+
+.form__input input {
+  @extend %base-input;
+}
+
+.form__input:has([data-name="your-date"]) input {
+  width: rem(156);
+
+  @include mq("lg") {
+    width: rem(175);
+    padding-inline: rem(20)
+  }
+}
+
+.form__column input {
+  @extend %base-input;
+}
+
+.form__item {
+  padding: rem(20);
+}
+
+.form__radio {
+  font-size: rem(16);
+  font-weight: var(--medium);
+  line-height: calc(32/16);
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.wpcf7-form-control.wpcf7-radio.form__radio {
+  display: grid;
+
+  @include mq("lg") {}
+}
+
+.wpcf7-list-item-label:has(a) {
+  gap: initial;
+}
+
+.wpcf7-list-item-label::before,
+.wpcf7-list-item-label::after {
+  content: none;
+}
+
+.form__item input+span {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  grid-template-columns: auto 1fr;
+  gap: rem(10);
+  cursor: pointer;
+}
+
+.form__item input+span::before {
+  content: "";
+  width: rem(24);
+  aspect-ratio: 1/1;
+  display: block;
+  background: var(--light-gray2);
+  border: 1px solid var(--gray4);
+  border-radius: 50%;
+  transition: border-color .3s;
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.form__item input+span::after {
+  content: "";
+  width: rem(12);
+  height: rem(12);
+  border-radius: 50%;
+  background: var(--main);
+  opacity: 0;
+  transition: opacity .3s, color .3s;
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.form__item input:checked+span::before {
+  border-color: var(--main);
+}
+
+.form__item input:checked+span::after {
+  opacity: 1;
+}
+
+.form__input textarea {
+  @extend %base-input;
+  min-height: rem(295);
+  width: 100%;
+  field-sizing: content;
+  resize: none;
+  padding: rem(17) rem(20);
+
+  @include mq("lg") {
+    min-height: rem(300);
+  }
+}
+
+.form__text {
+  margin-top: rem(30);
+  font-size: rem(16);
+  font-weight: var(--medium);
+  line-height: calc(32/16);
+
+  @include mq("md") {
+    margin-top: rem(60);
+  }
+}
+
+.form__text a {
+  color: var(--link);
+  text-decoration: underline;
+}
+
+.form__back,
+.form__send {
+  position: relative;
+  margin-top: rem(30);
+  margin-inline: auto;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: grid;
+  align-items: center;
+
+  @include mq("md") {
+    margin-top: rem(60);
+  }
+}
+
+.form__send {
+  width: min(100%, rem(380));
+
+  @include mq("md") {
+    margin-top: rem(30);
+    width: min(100%, rem(600));
+  }
+}
+
+.form__back {
+  width: min(100%, rem(260));
+
+  @include mq("md") {
+    width: fit-content;
+    min-width: rem(300);
+  }
+}
+
+.form__back input,
+.form__send input {
+  min-height: rem(50);
+  align-items: center;
+  padding-block: rem(8);
+  padding-inline: rem(50);
+  font-size: rem(16);
+  font-weight: var(--bold);
+  color: var(--main);
+  line-height: calc(29/16);
+  text-align: center;
+  border-radius: 100vh;
+  border: rem(2) solid var(--main);
+  background-color: var(--white);
+  white-space: pre-line;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  @include mq("md") {
+    padding-block: rem(23) rem(22);
+    padding-inline: rem(30);
+    font-size: rem(20);
+    line-height: calc(30/20);
+    border-width: rem(3);
+  }
+}
+
+.form__back input {
+  @include mq("md") {
+    padding-inline: rem(70);
+  }
+}
+
+.form__back::before {
+  content: "";
+  position: absolute;
+  left: calc(22/335*100%);
+  background-color: var(--main);
+  mask-image: url(../images/common/arrow.svg);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  width: rem(18);
+  aspect-ratio: 18/12;
+  transform: scaleX(-1);
+  transition: background-color 0.3s ease;
+
+  @include mq("md") {
+    left: rem(36);
+  }
+}
+
+.form__send::after {
+  content: "";
+  position: absolute;
+  right: calc(18/335*100%);
+  background-color: var(--main);
+  mask-image: url(../images/common/arrow.svg);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  width: rem(18);
+  aspect-ratio: 18/12;
+  transition: background-color 0.3s ease;
+
+  @include mq("md") {
+    right: rem(74);
+  }
+}
+
+.form__send input:disabled {
+  cursor: not-allowed;
+}
+
+.wpcf7-spinner {
+  display: none;
+}
+
+.form__input input::placeholder {
+  color: var(--gray3);
+  font-size: rem(16);
+  font-weight: var(--medium);
+  line-height: calc(32/16);
+}
+
+.form__input input:focus-visible,
+.form__column input:focus-visible,
+.form__input [type=checkbox]:focus-visible,
+.form__input select:focus-visible,
+.form__input textarea:focus-visible {
+  border-color: #76BCF0;
+  background-color: #F1F8FD;
+  filter: drop-shadow(0 0 rem(5) #82CBFF);
+}
+
+.form__input .has-value input {
+  border-color: #B7D2C1;
+  background-color: var(--bg-light-green);
+}
+
+.wpcf7-list-item {
+  margin-left: initial;
+}
+
+.wpcf7-form-control-wrap {
+  display: block;
   line-height: 1;
 }
 
-[type="radio"] {
-	display: none;
-
-	+ span {
-		display: inline-block;
-		position: relative;
-		padding: 0 0 0 calc($radio-size + $radio-space);
-		margin: 0 $radio-space-betweenRadio 0 0;
-		font-size: $radio-fz;
-		line-height: 1;
-		cursor: pointer;
-
-		&::before {
-			position: absolute;
-			content: "";
-			top: 50%;
-			left: 0;
-			transform: translateY(-50%);
-			background: $radio-bg-cr;
-			border: 1px solid $radio-border-cr;
-			border-radius: 50%;
-			width: $radio-size;
-			height: $radio-size;
-			display: block;
-		}
-
-		&::after {
-			opacity: 0;
-			transition: 0.3s ease;
-		}
-	}
-
-	&:checked + span {
-		&::after {
-			position: absolute;
-			content: "";
-			top: 50%;
-			left: calc(($radio-size - $radio-size-inner) / 2);
-			transform: translateY(-50%);
-			background: $radio-bg-cr-inner;
-			border-radius: 50%;
-			width: $radio-size-inner;
-			height: $radio-size-inner;
-			display: block;
-			opacity: 1;
-		}
-	}
+.wpcf7-not-valid-tip {
+  margin-top: rem(15);
+  font-size: rem(16);
+  font-weight: var(--bold);
+  color: var(--red);
+  line-height: calc(24/16);
 }
 
-[type="checkbox"] {
-	display: none;
-
-	+ span {
-		display: inline-block;
-		position: relative;
-		padding: 0 0 0 calc($check-size + $check-space);
-		margin: 0 $check-space-betweenRadio 0 0;
-		font-size: $check-fz;
-		line-height: 1;
-		cursor: pointer;
-		transition: 0.3s ease;
-
-		&::before {
-			position: absolute;
-			content: "";
-			top: 50%;
-			left: 0;
-			transform: translateY(-50%);
-			background: $check-bg-cr;
-			border: 1px solid $check-border-cr;
-			width: $check-size;
-			height: $check-size;
-			display: block;
-		}
-
-		&::after {
-			opacity: 0;
-			transition: 0.3s ease;
-		}
-	}
-
-	&:checked + span {
-		&::after {
-			content: "";
-			position: absolute;
-			top: 50%;
-			left: 0;
-			display: block;
-			opacity: 1;
-			/*チェックマークじゃない場合は以下を変更する*/
-			transform: translateY(-50%) rotate(-45deg);
-			width: calc($check-size * 0.9);
-			height: calc($check-size * 0.5);
-			margin-top: -0.1em;
-			margin-left: 0.1em;
-			border-left: $check-weight solid $check-bg-cr-inner;
-			border-bottom: $check-weight solid $check-bg-cr-inner;
-
-		}
-	}
+.form__input:has(.wpcf7-not-valid-tip) input,
+.form__input:has(.wpcf7-not-valid-tip) textarea {
+  border-color: var(--red);
+  background-color: #FFF0F0;
 }
 
-select {
-	/*↓リセットCSS */
-	border-radius: 0;
-	font-family: inherit;
-	color: inherit;
-	border: none;
-	cursor: pointer;
-	width: 100%;
-	/*↓カスタム */
-  margin-top: rem(10);
-	font-size: $fz;
-	padding: $padding-und $padding-lnr;
-	background-color: $back-cr;
-  border: 1px solid $border-cr-default;
-  border-radius: $border-r;
-	/*↓デフォルトのアイコンを消す場合はコメントアウト（noneにする）*/
-	appearance: auto;
-	/*↓デフォルトではないアイコンを使う場合は入力する*/
-	// background-image: url();
-	// background-position: right 12px center;
-	// background-repeat: no-repeat;
-	&:focus {
-		border: 1px solid $border-cr;
-	}
+.wpcf7-response-output {
+  display: none;
 }
 
-[type="date"] {
-	position: relative;
-	/*↓デフォルトのアイコンを消す場合はコメントアウト（noneにする）*/
-	appearance: auto;
-	/*↓デフォルトではないアイコンを使う場合は入力する*/
-	// background-image: url();
-	// background-position: right 12px center;
-	// background-repeat: no-repeat;
-	&:focus {
-		border-color: 1px solid $border-cr;
-	}
+@media (any-hover: hover) {
+
+  .form__send:hover:has(input:not([disabled])) input,
+  .form__back:hover input {
+    color: var(--white);
+    background-color: var(--main);
+    border-color: transparent;
+  }
+
+  .form__send:hover:has(input:not([disabled]))::after,
+  .form__back:hover::before {
+    background-color: var(--white);
+  }
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-	opacity: 0;
-	position: absolute;
-	width: 100%;
-	height: 100%;
+.form__info {
+  margin-top: rem(37);
+  font-size: rem(14);
+  line-height: calc(30/14);
+
+  @include mq("md") {
+    margin-top: rem(54);
+    font-size: rem(16);
+    line-height: calc(32/16);
+  }
 }
 
-textarea {
-	height: $textarea-height;
-  width: 100%;
-  max-width: rem(600);
+.form__privacy-policy {
+  margin-top: rem(64);
+  padding-block: rem(20);
+  padding-inline: rem(24);
+  height: rem(144);
+  overflow-y: auto;
+  border-radius: rem(8);
+  background-color: var(--white);
+  font-size: rem(14);
+  font-weight: var(--font-medium);
+  line-height: calc(28/14);
+
+  @include mq("md") {
+    margin-top: rem(30);
+    padding-block: rem(27);
+    padding-inline: rem(40);
+    height: rem(187);
+    font-size: rem(16);
+    line-height: calc(30/16);
+  }
 }
+
+.form__privacy-policy-read {}
+
+.form__privacy-policy-list {
+  margin-top: 1lh;
+  display: grid;
+  gap: 1lh;
+}
+
+.form__privacy-policy-item {}
+
+.form__privacy-policy-item-term {}
+
+.form__privacy-policy-item-desc {}

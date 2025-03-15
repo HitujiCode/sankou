@@ -1,0 +1,43 @@
+@use "global" as *;
+
+.message {
+  padding-top: rem(35);
+}
+
+.message__inner {}
+
+.message__container {
+  position: relative;
+  text-align: center;
+}
+
+.message__container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: rem(210);
+  height: 100%;
+  background-image: url(../images/bg-logo.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.message__title {
+  font-size: rem(16);
+  font-weight: var(--font-semi-bold);
+  font-family: var(--en-font);
+  font-style: italic;
+  color: var(--light-gray);
+  line-height: calc(19/16);
+}
+
+.message__text {
+  margin-top: rem(24);
+  font-size: rem(16);
+  font-weight: var(--font-bold);
+  color: #626262;
+  line-height: calc(37/16);
+}

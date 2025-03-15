@@ -1,0 +1,10 @@
+@use "global" as *;
+
+.en-accent {
+  font-size: rem(117);
+  font-weight: var(--font-semi-bold);
+  font-family: var(--en-font);
+  color: var(--white);
+  line-height: calc(117/119);
+  text-transform: uppercase;
+}

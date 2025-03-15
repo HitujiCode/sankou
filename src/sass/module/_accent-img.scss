@@ -1,0 +1,25 @@
+@use "global" as *;
+
+.accent-img {
+  overflow-x: clip;
+  margin-top: rem(-50);
+
+  @include mq("md") {
+    margin-top: rem(-50);
+  }
+}
+
+.accent-img__wrap {
+  width: max(100%, 640px);
+}
+
+.accent-img img {
+  aspect-ratio: 640/375;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  @include mq("md") {
+    aspect-ratio: 1440/799;
+  }
+}
