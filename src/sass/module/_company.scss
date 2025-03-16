@@ -18,7 +18,6 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  z-index: 1;
 }
 
 .company::after {
@@ -44,6 +43,7 @@
   right: rem(-16);
   transform: translateY(-66.5%);
   writing-mode: vertical-rl;
+  z-index: -1;
 }
 
 .company__overview {
@@ -188,8 +188,9 @@
 
 .company__history-wrap:nth-of-type(1) .company__history-month {
   position: absolute;
-  top: rem(-34);
+  top: 0;
   left: rem(83);
+  transform: translateY(50%);
 }
 
 .company__history-event {

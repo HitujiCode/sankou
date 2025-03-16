@@ -4,7 +4,7 @@
   position: relative;
   overflow-x: clip;
   --_border-radius: calc(50/16*1rem);
-  padding-block: rem(60);
+  padding-block: rem(60) rem(157);
   border-radius: var(--_border-radius) var(--_border-radius) 0 0;
   background-image: linear-gradient(#f0ecfa 0%, #eff7ff 33.5%, #f0f6f7 69.46%, #f1edfc 100%);
 
@@ -16,8 +16,9 @@
 
 .contact__accent {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: rem(20);
+  left: rem(-8);
+  mix-blend-mode: soft-light;
 }
 
 .contact__inner.inner {
@@ -26,8 +27,7 @@
   }
 }
 
-.contact__container {
-}
+.contact__container {}
 
 .contact__title {}
 
@@ -55,7 +55,7 @@
 }
 
 .contact__info {
-  justify-self: center;
+  padding-left: calc(20/430*100vw);
 }
 
 .contact__info-head {
@@ -71,14 +71,15 @@
 .contact__info-tel {
   display: flex;
   align-items: center;
-  gap: rem(16);
+  justify-content: space-between;
   font-weight: var(--font-bold);
   color: var(--purple);
   letter-spacing: 0.03em;
+  max-width: min(356/430*100vw, 356px);
 }
 
 .contact__info-tel-head {
-  font-size: rem(22);
+  font-size: min(22/430*100vw, rem(22));
   line-height: calc(30/22);
 
   @include mq("md") {
@@ -90,7 +91,7 @@
 .contact__info-tel-num {
   position: relative;
   top: rem(-4);
-  font-size: rem(43);
+  font-size: min(43/430*100vw, rem(43));
   line-height: calc(59/43);
 
   @include mq("md") {
@@ -110,7 +111,7 @@
 }
 
 .contact__form {
-  margin-top: rem(44);
+  margin-top: rem(38);
 
   @include mq("md") {
     margin-top: rem(80);

@@ -28,10 +28,11 @@ dd {
 
 /* Set core root defaults */
 html {
-  scroll-padding-top: 4.375rem;
+  scroll-behavior: smooth;
+  scroll-margin-top: calc(65/16*1rem);
 
   @media (min-width: 768px) {
-    scroll-padding-top: 5rem;
+    scroll-margin-top: calc(90/16*1rem);
   }
 }
 
@@ -89,6 +90,10 @@ img:not([alt]) {
   background-color: unset;
   border: unset;
   overflow: unset;
+}
+
+summary::-webkit-details-marker {
+  display: none;
 }
 
 /* フォームリセット */

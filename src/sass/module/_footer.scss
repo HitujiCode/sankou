@@ -3,9 +3,9 @@
 .footer {
   position: relative;
   padding-block: rem(70) rem(50);
-  background-image: url(../bg-footer.webp);
+  background-image: url(../images/bg-footer-sp.webp);
   background-repeat: no-repeat;
-  background-position: center top;
+  background-position: left top;
   background-size: cover;
 
   @include mq("md") {
@@ -15,9 +15,13 @@
 
 .footer__inner.inner {}
 
-.footer__container {}
+.footer__container {
+  display: grid;
+  justify-content: center;
+}
 
 .footer__logo {
+  display: block;
   width: rem(253);
 }
 
@@ -26,10 +30,12 @@
 }
 
 .footer__info {
-  margin-top: rem(22);
+  margin-top: rem(24);
   font-size: rem(14);
   font-weight: var(--font-medium);
-  line-height: calc(19/14);
+  font-style: normal;
+  color: var(--white);
+  line-height: calc(20/14);
   text-align: center;
 
   @include mq("md") {
@@ -47,11 +53,11 @@
   content: "";
   position: absolute;
   top: 50%;
-  right: 0;
-  transform: translateY(-50%);
+  right: rem(-8);
+  transform: translate(100%, -50%);
   width: rem(10);
   aspect-ratio: 10/14;
-  background-image: url(../icon-map.svg);
+  background-image: url(../images/icon-map.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -64,14 +70,15 @@
 .footer__info-contact {}
 
 .footer__copyright {
-  margin-top: rem(57);
+  margin-top: rem(48);
+  text-align: center;
 }
 
 .footer__copyright small {
   font-size: 11px;
   font-weight: var(--font-semi-bold);
-  line-height: calc(13/11);
-  text-align: center;
+  line-height: calc(16/11);
+  color: var(--white);
 
   @include mq("md") {
     font-size: max(11px, rem(13));

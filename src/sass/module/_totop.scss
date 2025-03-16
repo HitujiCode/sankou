@@ -1,8 +1,10 @@
 @use "global" as *;
 
 .totop {
+  display: block;
   width: rem(48);
   aspect-ratio: 1/1;
+  transition: transform 0.3s ease;
 
   @include mq("md") {
     width: rem(77);
@@ -11,4 +13,10 @@
 
 .totop img {
   object-fit: contain;
+}
+
+@media (any-hover: hover) {
+  .totop:hover {
+    transform: scale(1.08);
+  }
 }

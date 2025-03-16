@@ -81,30 +81,79 @@ document.addEventListener("DOMContentLoaded", function () {
 
   initHamburgerMenu();
 
-  // ===== スクロールしたらヘッダーにクラス付与 =====
-  document.addEventListener('scroll', function () {
-    const header = document.querySelector('.js-header');
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-
-    if (scrollTop > 0) {
-      header.classList.add('is-scroll');
-    } else {
-      header.classList.remove('is-scroll');
-    }
-  });
-
   // ===== ページ内リンクのスムーススクロール =====
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-    anchor.addEventListener("click", function (event) {
-      event.preventDefault();
-      const headerHeight = document.querySelector(".js-header").offsetHeight;
-      const href = anchor.getAttribute("href");
-      const target = href === "#" || href === "" ? document.documentElement : document.querySelector(href);
+  // document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+  //   anchor.addEventListener("click", function (event) {
+  //     event.preventDefault();
 
-      if (target) {
-        const position = target.offsetTop - headerHeight;
-        window.scrollTo({ top: position, behavior: "smooth" });
+  //     setTimeout(() => {
+  //       const headerHeight = document.querySelector(".js-header").offsetHeight;
+  //       const href = anchor.getAttribute("href");
+  //       const target = href === "#" || href === "" ? document.documentElement : document.querySelector(href);
+
+  //       if (target) {
+  //         const position = target.offsetTop - headerHeight;
+  //         window.scrollTo({ top: position, behavior: "smooth" });
+  //       }
+  //     }, 100); // 100ミリ秒（0.1秒）遅延
+  //   });
+  // });
+
+
+  // ===== リクルートブロック =====
+  setUpAccordion();
+
+});
+
+// ===== リクルートブロックの開閉アニメーション =====
+const setUpAccordion = () => {
+  const details = document.querySelectorAll(".js-details");
+  const RUNNING_VALUE = "running";
+  const IS_OPENED_CLASS = "is-opened";
+
+  details.forEach((element) => {
+    const summary = element.querySelector(".js-summary");
+    const content = element.querySelector(".js-content");
+
+    element.dataset.animStatus = "";
+
+    summary.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      if (element.dataset.animStatus === RUNNING_VALUE) return;
+
+      if (element.open) {
+        element.classList.remove(IS_OPENED_CLASS);
+
+        const closingAnim = content.animate(closingAnimKeyframes(content), animTiming);
+        element.dataset.animStatus = RUNNING_VALUE;
+
+        closingAnim.onfinish = () => {
+          element.removeAttribute("open");
+          element.dataset.animStatus = "";
+        };
+      } else {
+        element.setAttribute("open", "true");
+        element.classList.add(IS_OPENED_CLASS);
+        const openingAnim = content.animate(openingAnimKeyframes(content), animTiming);
+        element.dataset.animStatus = RUNNING_VALUE;
+
+        openingAnim.onfinish = () => {
+          element.dataset.animStatus = "";
+        };
       }
     });
   });
-});
+};
+
+const animTiming = { duration: 400, easing: "ease-out" };
+
+const closingAnimKeyframes = (content) => [
+  { height: content.offsetHeight + "px", opacity: 1 },
+  { height: 0, opacity: 0 }
+];
+
+const openingAnimKeyframes = (content) => [
+  { height: 0, opacity: 0 },
+  { height: content.offsetHeight + "px", opacity: 1 }
+];

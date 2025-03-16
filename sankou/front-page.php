@@ -11,7 +11,7 @@
             <img src="<?php img_path('catchcopy.svg'); ?>" alt="道をつなぎ、想いをつなぎ、未来をつなぐ。" width="270" height="132">
           </h2>
           <figure class="mv__img">
-            <img src="<?php img_path('mv.webp'); ?>" alt="快晴の空と海と船" width="380" height="776">
+            <img src="<?php img_path('mv.webp'); ?>" alt="快晴の空と海と船" width="1350" height="776">
           </figure>
         </div>
       </div>
@@ -49,7 +49,7 @@
           <div class="service__title">
             <div class="section-title">
               <figure class="section-title__en" style="--_width-sp: 148; --_width-pc: 246;">
-                <img src="<?php img_path('title-service.svg'); ?>" alt="Service" width="148" height="32">
+                <img src="<?php img_path('title-service.svg'); ?>" alt="Service" width="148" height="32" loading="lazy">
               </figure>
               <h2 class="section-title__ja">サービス一覧</h2>
             </div>
@@ -91,7 +91,7 @@
     </section>
 
     <!-- 会社概要 -->
-    <section class="company layout-company">
+    <section id="company" class="company layout-company">
       <div class="company__accent">
         <div class="en-accent" aria-hidden="true">Company</div>
       </div>
@@ -100,7 +100,7 @@
           <div class="company__overview-title">
             <div class="section-title section-title--descender">
               <div class="section-title__en" style="--_width-sp: 186; --_width-pc: 246;">
-                <img src="<?php img_path('title-company.svg'); ?>" alt="Company" width="186" height="40">
+                <img src="<?php img_path('title-company.svg'); ?>" alt="Company" width="186" height="40" loading="lazy">
               </div>
               <h2 class="section-title__ja">会社概要</h2>
             </div>
@@ -471,7 +471,7 @@
         <div class="recruit__title">
           <div class="section-title">
             <div class="section-title__en section-title__en--screen" style="--_width-sp: 156; --_width-pc: 246;">
-              <img src="<?php img_path('title-recruit.svg'); ?>" alt="Recruit" width="156" height="36">
+              <img src="<?php img_path('title-recruit.svg'); ?>" alt="Recruit" width="156" height="36" loading="lazy">
             </div>
             <h2 class="section-title__ja">採用情報</h2>
           </div>
@@ -483,8 +483,8 @@
             'job' => '職種が入ります。募集職種を増やせます',
             'details' => [
               [
-                'term' => '海上輸送',
-                'desc' => '海上輸送',
+                'term' => '業務内容',
+                'desc' => '集配ドライバー、航空貨物の仕分け作業等',
               ],
             ],
           ],
@@ -541,16 +541,18 @@
             <li class="recruit__item">
               <details class="recruit-block js-details">
                 <summary class="recruit-block__title js-summary"><?php echo wp_kses_post($item['job']); ?></summary>
-                <div class="recruit-block__content js-content">
-                  <?php foreach ($item['details'] as $detail) : ?>
-                    <?php if (!empty($detail['term']) && !empty($detail['desc'])) : ?>
-                      <div class="recruit-block__detail">
-                        <dt class="recruit-block__detail-term"><?php echo wp_kses_post($detail['term']); ?></dt>
-                        <dd class="recruit-block__detail-desc"><?php echo wp_kses_post($detail['desc']); ?></dd>
-                      </div>
-                    <?php endif; ?>
-                  <?php endforeach; ?>
-                </div>
+                <dl class="recruit-block__content js-content">
+                  <div class="recruit-block__inner">
+                    <?php foreach ($item['details'] as $detail) : ?>
+                      <?php if (!empty($detail['term']) && !empty($detail['desc'])) : ?>
+                        <div class="recruit-block__detail">
+                          <dt class="recruit-block__detail-term"><?php echo wp_kses_post($detail['term']); ?></dt>
+                          <dd class="recruit-block__detail-desc"><?php echo wp_kses_post($detail['desc']); ?></dd>
+                        </div>
+                      <?php endif; ?>
+                    <?php endforeach; ?>
+                  </div>
+                </dl>
               </details>
             </li>
           <?php endforeach; ?>
@@ -561,7 +563,7 @@
 
   <div class="accent-img">
     <div class="accent-img__wrap">
-      <img src="<?php img_path('accent-img.webp'); ?>" alt="" width="640" height="375">
+      <img src="<?php img_path('accent-img.webp'); ?>" alt="" width="640" height="375" loading="lazy">
     </div>
   </div>
 
@@ -574,88 +576,29 @@
         <div class="contact__title">
           <div class="section-title">
             <div class="section-title__en" style="--_width-sp: 147; --_width-pc: 246;">
-              <img src="<?php img_path('title-contact.svg'); ?>" alt="Contact" width="147" height="30">
+              <img src="<?php img_path('title-contact.svg'); ?>" alt="Contact" width="147" height="30" loading="lazy">
             </div>
             <h2 class="section-title__ja">お問い合わせ</h2>
           </div>
-          </hgroup>
         </div>
-        <div class="contact__wrap">
-          <p class="contact__text">
-            当社に関するご意見・ご要望・ご質問など各種お問い合わせは、以下のフォームにご入力の上、「送信」ボタンを押してください。<span class="color-red">*</span>は必須項目です。
+      </div>
+      <div class="contact__wrap">
+        <p class="contact__text">
+          当社に関するご意見・ご要望・ご質問など各種お問い合わせは、以下のフォームにご入力の上、「送信」ボタンを押してください。<span class="color-red">*</span>は必須項目です。
+        </p>
+        <div class="contact__info">
+          <p class="contact__info-head">お電話でのお問い合わせ</p>
+          <p class="contact__info-tel">
+            <span class="contact__info-tel-head">TEL.</span>
+            <span class="contact__info-tel-num">089-925-1041</span>
           </p>
-          <div class="contact__info">
-            <p class="contact__info-head">お電話でのお問い合わせ</p>
-            <p class="contact__info-tel">
-              <span class="contact__info-tel-head">TEL.</span>
-              <span class="contact__info-tel-num">089-925-1041</span>
-            </p>
-            <p class="contact__info-hours">
-              受付時間 9:00-17:00（土日祝・年末年始を除く）
-            </p>
-          </div>
+          <p class="contact__info-hours">
+            受付時間 9:00-17:00（土日祝・年末年始を除く）
+          </p>
         </div>
-        <div class="contact__form">
-          <?php the_content(); ?>
-          <!-- form -->
-          <!-- <div class="form">
-            <div class="form__content">
-              <div class="form__wrap">
-                <label for="your-name" class="form__term">お名前<span class="form__required">*</span></label>
-                <div class="form__input">[text* your-name id:your-name autocomplete:name]</div>
-              </div>
-              <div class="form__wrap">
-                <label for="your-address" class="form__term">ご住所</label>
-                <div class="form__input">[text your-address id:your-address autocomplete:address]</div>
-              </div>
-              <div class="form__wrap">
-                <label for="your-tel" class="form__term">電話番号<span class="form__required">*</span></label>
-                <div class="form__input">[tel* your-tel id:your-tel autocomplete:tel-national]</div>
-              </div>
-              <div class="form__wrap">
-                <label for="your-email" class="form__term">メールアドレス<span class="form__required">*</span></label>
-                <div class="form__input">[email* your-email id:your-email autocomplete:email]</div>
-              </div>
-              <div class="form__wrap">
-                <label for="your-email-confirm" class="form__term">メールアドレス(確認用)<span class="form__required">*</span></label>
-                <div class="form__input">[email* your-email-confirm id:your-email-confirm autocomplete:email]</div>
-              </div>
-              <div class="form__wrap">
-                <label for="your-textarea" class="form__term">お問い合わせ内容*<span class="form__required">*</span></label>
-                <div class="form__input">[textarea* your-textarea maxlength:300 id:your-textarea]</div>
-              </div>
-            </div>
-            <p class="form__info">
-              [ご注意事項について]<br>
-              ・お問合せの内容により回答にお時間を頂く場合がございます。<br>
-              ・回答については担当部署よりお返事致します。<br>
-              ・携帯・スマートフォンからのお問い合わせの方は以下ドメインを受信できるように設定をお願い致します。
-            </p>
-            <div class="form__privacy-policy">
-              <p class="form__privacy-policy-read">三光運輸株式会社では、三光運輸ホームページ（以下、「当サイト」といいます。）の運営に際し、お客様のプライバシーを尊重し個人情報に対して十分な配慮を行うと共に大切に保護し、適正な管理を行うことに努めております。</p>
-              <dl class="form__privacy-policy-list">
-                <div class="form__privacy-policy-item">
-                  <dt class="form__privacy-policy-item-term">１.個人情報利用目的</dt>
-                  <dd class="form__privacy-policy-item-desc">お客様の個人情報は、原則として、当社のサービスに関する情報をご提供する目的や当社に対するご意見、ご要望に関する今後の改善、及び、問い合せに関するご回答のために利用致します。<br>それ以外の目的で利用する場合は個人情報をご提供いただく際に予め目的を明示しておりますのでご確認下さい。</dd>
-                </div>
-                <div class="form__privacy-policy-item">
-                  <dt class="form__privacy-policy-item-term">２.第三者への情報提供</dt>
-                  <dd class="form__privacy-policy-item-desc">お客様の個人情報は、以下の場合を除き第三者に開示、提供、譲渡、することは致しません。<br>(1).法的拘束力がある第三者機関からの開示要求がある場合<br>(2).お客様本人の同意があった場合</dd>
-                </div>
-                <div class="form__privacy-policy-item">
-                  <dt class="form__privacy-policy-item-term">3.適用範囲</dt>
-                  <dd class="form__privacy-policy-item-desc">本プライバシーポリシーは当サイト内にのみ適用されます。当サイトからリンクの張られている他のサイトでの個人情報保護については一切の責任を負いません。</dd>
-                </div>
-                <div class="form__privacy-policy-item">
-                  <dt class="form__privacy-policy-item-term">4.免責事項</dt>
-                  <dd class="form__privacy-policy-item-desc">当サイトに掲載されている情報の正確さには万全を期していますが、新世紀海運株式会社は利用者が本ホームページの情報を用いて行う一切の行為について、一切の責任を負わないものとします。<br>新世紀海運株式会社は、利用者が当サイトを利用したことにより発生した利用者の損害及び利用者が第三者に与えた損害については、一切の責任を負わないものとします。</dd>
-                </div>
-              </dl>
-            </div>
-            <div class="form__acceptance">[acceptance your-acceptance id:your-acceptance]プライバシーポリシーに同意する[/acceptance]</div>
-            <div class="form__send">[submit "送信する"]</div>
-          </div> -->
-        </div>
+      </div>
+      <div class="contact__form">
+        <?php the_content(); ?>
       </div>
     </div>
   </section>

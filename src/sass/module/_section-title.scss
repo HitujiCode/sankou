@@ -37,6 +37,7 @@
 
 .section-title__en {
   --_width-sp: 148;
+  display: block;
   width: calc(var(--_width-sp)/16*1rem);
 
   @include mq("md") {

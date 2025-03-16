@@ -26,6 +26,7 @@
 
 .card__title {
   font-size: rem(26);
+  font-size: min(26/430*100vw, rem(26));
   font-weight: var(--font-bold);
   color: var(--purple);
   line-height: calc(49/25);

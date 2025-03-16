@@ -1,23 +1,21 @@
 @use "global" as *;
 
 .recruit {
+  --_mask-height: calc(40/430*100vw);
   position: relative;
   overflow-x: clip;
   padding-block: rem(78) rem(103);
-}
-
-.recruit::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url(../images/bg-recruit-sp.webp);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  // z-index: 1;
+  padding-block: min(78/430*100vw, 100px) min(103/430*100vw, 100px);
+  background-image: linear-gradient(#513298 0%, #5276bc 31.53%, #679ede 68.47%, #209ba5 100%);
+  mask-image: url(../images/bg-recruit-top-sp.svg), url(../images/bg-recruit-square.svg), url(../images/bg-recruit-bottom-sp.svg);
+  mask-size: 100% var(--_mask-height), 100% calc(100% - var(--_mask-height) * 2 + 2px), 100% var(--_mask-height);
+  mask-repeat: no-repeat;
+  mask-position: 0 0, 100% calc(var(--_mask-height) - 1px), 100% 100%;
 
   @include mq("md") {
-    background-image: url(../images/bg-recruit.webp);
+    --_mask-height: 120px;
+    mask-image: url(../images/bg-recruit-top.svg), url(../images/bg-recruit-square.svg), url(../images/bg-recruit-bottom.svg);
+    mask-size: 100% var(--_mask-height), 100% calc(100% - var(--_mask-height) * 2), 100% var(--_mask-height);
   }
 }
 
@@ -36,8 +34,7 @@
   z-index: 2;
 }
 
-.recruit__title {
-}
+.recruit__title {}
 
 .recruit__list {
   margin-top: rem(44);
@@ -50,4 +47,3 @@
 }
 
 .recruit__item {}
-

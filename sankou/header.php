@@ -61,7 +61,7 @@
             </li>
           <?php endforeach; ?>
           <li class="header__nav-item header__nav-item--contact">
-            <a class="header__nav-contact" href="#contact">お問い合わせ</a>
+            <a class="header__nav-contact button" href="#contact">お問い合わせ</a>
           </li>
         </ul>
       </nav>

@@ -3,6 +3,7 @@
 .service {
   position: relative;
   overflow-x: clip;
+  z-index: 1;
 }
 
 .service__accent {

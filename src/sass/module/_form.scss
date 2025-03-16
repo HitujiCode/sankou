@@ -1,30 +1,21 @@
 @use "global" as *;
 
 .form {
-  font-size: rem(18);
-  line-height: calc(32/18);
-  display: grid;
+  font-size: 16px;
+}
 
-  @include mq("md") {}
+.form__content {
+  display: grid;
+  gap: rem(16);
 }
 
 .form__wrap {
   display: grid;
   grid-template-columns: 1fr;
-  border: 1px solid var(--main);
+  row-gap: rem(2);
 
   @include mq("md") {
     grid-template-columns: calc(270/1000*100%) 1fr;
-  }
-}
-
-.form__wrap:not(:first-child) {
-  margin-top: -1px;
-}
-
-.form__wrap:not(:last-child) {
-  @include mq("md") {
-    border-bottom: initial;
   }
 }
 
@@ -36,15 +27,10 @@
 }
 
 .form__term {
-  background-color: var(--bg-light-green);
-  font-weight: var(--bold);
-  padding: rem(20);
+  font-size: rem(14);
+  line-height: calc(32/14);
 
-  @include mq("md") {
-    border-right: 1px solid var(--main);
-    height: 100%;
-    padding: rem(30);
-  }
+  @include mq("md") {}
 }
 
 .form__term:not(:first-of-type) {
@@ -67,32 +53,18 @@
 }
 
 .form__required {
-  background-color: var(--red);
-  border-radius: rem(5);
-  font-size: rem(14);
-  font-weight: var(--regular);
-  color: var(--white);
-  line-height: calc(30/14);
-  padding-inline: rem(10);
+  color: var(--red);
 }
 
-.form__input {
-  padding: rem(20);
-
-  @include mq("md") {
-    padding: rem(30);
-  }
-}
+.form__input {}
 
 %base-input {
   width: 100%;
-  background-color: var(--light-gray2);
-  border-radius: rem(10);
-  border: 1px solid var(--gray4);
-  padding-block: rem(13);
-  padding-inline: rem(20);
-  font-size: rem(16);
-  font-weight: var(--medium);
+  background-color: var(--white);
+  border-radius: rem(8);
+  padding-block: calc(6/16*1em) calc(7/16*1em);
+  padding-inline: 1em;
+  font-size: 16px;
   line-height: calc(32/16);
 
   @include mq("lg") {
@@ -144,49 +116,56 @@
   content: none;
 }
 
-.form__item input+span {
+.form__acceptance {
+  margin-top: rem(36);
+  font-size: rem(14);
+  line-height: calc(28/14);
+  text-align: center;
+}
+
+.form__acceptance input+span {
   position: relative;
   display: inline-grid;
   place-items: center;
   grid-template-columns: auto 1fr;
-  gap: rem(10);
   cursor: pointer;
 }
 
-.form__item input+span::before {
+.form__acceptance input+span::before {
   content: "";
-  width: rem(24);
+  width: 0.6em;
+  // width: 1em;
   aspect-ratio: 1/1;
   display: block;
-  background: var(--light-gray2);
-  border: 1px solid var(--gray4);
-  border-radius: 50%;
+  border: 1px solid;
   transition: border-color .3s;
   grid-area: 1 / 1 / 2 / 2;
 }
 
-.form__item input+span::after {
+.form__acceptance input+span::after {
   content: "";
-  width: rem(12);
-  height: rem(12);
-  border-radius: 50%;
-  background: var(--main);
+  width: 40%;
+  aspect-ratio: 1/2;
+  border: 1px solid;
+  clip-path: polygon(0 0, 0% 100%, 100% 0);
+  transform: rotate(-135deg);
   opacity: 0;
-  transition: opacity .3s, color .3s;
+  transition: opacity .3s;
   grid-area: 1 / 1 / 2 / 2;
+  position: relative;
+  bottom: 1px;
+  // bottom: 2px;
 }
 
-.form__item input:checked+span::before {
-  border-color: var(--main);
-}
+.form__acceptance input:checked+span::before {}
 
-.form__item input:checked+span::after {
+.form__acceptance input:checked+span::after {
   opacity: 1;
 }
 
 .form__input textarea {
   @extend %base-input;
-  min-height: rem(295);
+  min-height: rem(205);
   width: 100%;
   field-sizing: content;
   resize: none;
@@ -228,7 +207,8 @@
 }
 
 .form__send {
-  width: min(100%, rem(380));
+  width: min(100%, rem(250));
+  filter: drop-shadow(0 rem(3) rem(6) rgb(0 0 0 /0.16));
 
   @include mq("md") {
     margin-top: rem(30);
@@ -237,7 +217,7 @@
 }
 
 .form__back {
-  width: min(100%, rem(260));
+  width: min(100%, rem(250));
 
   @include mq("md") {
     width: fit-content;
@@ -247,20 +227,21 @@
 
 .form__back input,
 .form__send input {
-  min-height: rem(50);
-  align-items: center;
-  padding-block: rem(8);
-  padding-inline: rem(50);
-  font-size: rem(16);
-  font-weight: var(--bold);
-  color: var(--main);
-  line-height: calc(29/16);
-  text-align: center;
-  border-radius: 100vh;
-  border: rem(2) solid var(--main);
-  background-color: var(--white);
-  white-space: pre-line;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  // min-height: rem(50);
+  // align-items: center;
+  padding-block: rem(17) rem(19);
+  padding-inline: calc(53/17*1em) calc(44/17*1em);
+  font-size: rem(17);
+  font-weight: var(--font-bold);
+  color: var(--white);
+  line-height: calc(34/17);
+  text-align: left;
+  border-radius: calc(1px/0);
+  background-image: var(--gradient-main);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: transform 0.3s ease;
 
   @include mq("md") {
     padding-block: rem(23) rem(22);
@@ -271,17 +252,13 @@
   }
 }
 
-.form__back input {
-  @include mq("md") {
-    padding-inline: rem(70);
-  }
-}
+.form__back input {}
 
 .form__back::before {
   content: "";
   position: absolute;
   left: calc(22/335*100%);
-  background-color: var(--main);
+  background-color: var(--red);
   mask-image: url(../images/common/arrow.svg);
   mask-repeat: no-repeat;
   mask-position: center;
@@ -299,15 +276,15 @@
 .form__send::after {
   content: "";
   position: absolute;
-  right: calc(18/335*100%);
-  background-color: var(--main);
-  mask-image: url(../images/common/arrow.svg);
+  right: calc(45/17*1em);
+  background-color: var(--white);
+  mask-image: url(../images/icon-arrow-left.svg);
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: contain;
-  width: rem(18);
-  aspect-ratio: 18/12;
-  transition: background-color 0.3s ease;
+  width: rem(17);
+  aspect-ratio: 17/15;
+  transition: transform 0.3s ease;
 
   @include mq("md") {
     right: rem(74);
@@ -334,14 +311,9 @@
 .form__input [type=checkbox]:focus-visible,
 .form__input select:focus-visible,
 .form__input textarea:focus-visible {
-  border-color: #76BCF0;
-  background-color: #F1F8FD;
-  filter: drop-shadow(0 0 rem(5) #82CBFF);
-}
-
-.form__input .has-value input {
-  border-color: #B7D2C1;
-  background-color: var(--bg-light-green);
+  border-color: color-mix(in srgb, var(--blue) 50%, var(--white));
+  background-color: var(--white);
+  filter: drop-shadow(0 0 rem(5) color-mix(in srgb, var(--blue) 50%, var(--white)));
 }
 
 .wpcf7-list-item {
@@ -368,26 +340,24 @@
 }
 
 .wpcf7-response-output {
-  display: none;
+  // display: none;
 }
 
 @media (any-hover: hover) {
 
   .form__send:hover:has(input:not([disabled])) input,
   .form__back:hover input {
-    color: var(--white);
-    background-color: var(--main);
-    border-color: transparent;
+    transform: scale(1.05);
   }
 
   .form__send:hover:has(input:not([disabled]))::after,
   .form__back:hover::before {
-    background-color: var(--white);
+    transform: scale(1.05) translateX(rem(5));
   }
 }
 
 .form__info {
-  margin-top: rem(37);
+  margin-top: rem(32);
   font-size: rem(14);
   line-height: calc(30/14);
 
@@ -399,11 +369,8 @@
 }
 
 .form__privacy-policy {
-  margin-top: rem(64);
-  padding-block: rem(20);
-  padding-inline: rem(24);
-  height: rem(144);
-  overflow-y: auto;
+  margin-top: rem(26);
+  padding-block: rem(16);
   border-radius: rem(8);
   background-color: var(--white);
   font-size: rem(14);
@@ -418,6 +385,12 @@
     font-size: rem(16);
     line-height: calc(30/16);
   }
+}
+
+.form__privacy-policy-inner {
+  overflow-y: auto;
+  height: rem(112);
+  padding-inline: rem(24) rem(50);
 }
 
 .form__privacy-policy-read {}

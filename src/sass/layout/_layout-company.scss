@@ -1,7 +1,7 @@
 @use "global" as *;
 
 .layout-company {
-  margin-top: rem(472);
+  margin-top: rem(430);
 
   @include mq("md") {
     margin-top: rem(56);
