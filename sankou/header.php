@@ -5,6 +5,17 @@
   <meta charset="<?php bloginfo('charset'); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no">
+  <!-- meta description -->
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <!-- Open Graph protocol metadata -->
+  <meta property="og:url" content="<?php echo esc_url(get_permalink()); ?>">
+  <meta property="og:type" content="<?php echo is_front_page() ? 'website' : 'article'; ?>">
+  <meta property="og:title" content="<?php echo esc_attr(is_front_page() ? get_bloginfo('name') : get_the_title() . '｜' . get_bloginfo('name')); ?>">
+  <meta property="og:image" content="">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="<?php bloginfo('name'); ?>">
+  <meta name="twitter:card" content="summary_large_image" />
   <!-- 404ページの自動遷移 -->
   <?php if (is_404()) : ?>
     <meta http-equiv="refresh" content=" 5; url=<?php echo esc_url(home_url("/")); ?>">

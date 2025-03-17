@@ -56,28 +56,3 @@ function wpcf7_autop_return_false()
 {
   return false;
 }
-
-
-//ログイン画面のカスタマイズ
-function login_customize() {
-  echo '<style type="text/css">
-    #login h1 a {
-      background: url('.get_template_directory_uri().'/assets/images/common/logo.svg) no-repeat center;
-      background-size: contain;
-      width: 168px;
-      height: 100px;
-    }
-    body {
-      background: url('.get_template_directory_uri().'/assets/images/common/login-bg.webp) no-repeat center;
-      background-size: cover;
-    }
-   .login #backtoblog, .login #nav{
-      padding:8px;
-      background-color:#fff;
-      }
-  .dashicons-translation:before{
-      color:#fff;
-      }
-  </style>';
-}
-add_action('login_head', 'login_customize');

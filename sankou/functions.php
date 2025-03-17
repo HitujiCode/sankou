@@ -22,4 +22,4 @@ get_template_part('functions-lib/func-posts-edit');
 get_template_part('functions-lib/func-url');
 
 // 管理画面カスタマイズ
-// get_template_part('functions-lib/func-admin');
+get_template_part('functions-lib/func-admin');
