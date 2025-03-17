@@ -4,7 +4,6 @@
   position: relative;
   overflow-x: clip;
   height: 100svh;
-  min-height: 400px;
   padding-top: var(--header-height);
 
   @include mq("md") {
@@ -14,12 +13,10 @@
 
 .mv__inner {
   height: calc(100svh - var(--header-height));
-  min-height: calc(400px - var(--header-height));
   padding-left: rem(50);
 
   @include mq("md") {
-    min-height: calc(600px - var(--header-height));
-    padding-left: rem(90);
+    padding-left: max(rem(90), 90/1440*100vw);
   }
 }
 
@@ -40,6 +37,7 @@
   width: rem(270);
 
   @include mq("md") {
+    top: 50%;
     left: calc(156/1440*100vw);
     width: rem(441);
   }
@@ -53,7 +51,6 @@
   --_border-radius: calc(100/16*1rem);
   display: block;
   height: inherit;
-  min-height: inherit;
   border-top-left-radius: var(--_border-radius);
   width: rem(1350);
 
@@ -83,7 +80,7 @@
   left: rem(18.5);
 
   @include mq("md") {
-    left: rem(36.5);
+    left: max(rem(36.5), 36.5/1440*100vw);
   }
 }
 

@@ -39,6 +39,7 @@
 
 .header__logo {
   height: inherit;
+  transition: opacity 0.3s;
 }
 
 .header__logo-link {
@@ -50,6 +51,7 @@
 
   @include mq("md") {
     align-items: start;
+    gap: rem(4);
     padding-top: rem(23);
   }
 }
@@ -59,6 +61,8 @@
   width: rem(38);
 
   @include mq("md") {
+    position: relative;
+    top: rem(8);
     width: rem(130);
   }
 
@@ -138,19 +142,7 @@
   }
 }
 
-.header__nav-contact {
-  display: inline-grid;
-  place-items: center;
-  font-size: rem(15);
-  font-weight: var(--font-bold);
-  color: var(--white);
-  line-height: calc(21/15);
-  padding-block: calc(12/15*1em);
-  padding-inline: calc(30/15*1em);
-  background-image: var(--gradient-purple-green);
-  border-radius: calc(1px/0);
-  transition: color 0.3s;
-}
+.header__nav-contact {}
 
 .header__hamburger {
   margin-left: auto;
@@ -223,7 +215,6 @@
 }
 
 .header__drawer-wrapper {
-  // padding-block: rem(120) clamp(rem(100), 190/931*100vh, rem(190));
   padding-block: rem(40) rem(60);
 }
 
@@ -258,6 +249,7 @@
   font-style: italic;
   color: var(--green);
   line-height: calc(19/16);
+  transition: mix-blend-mode 0.3s;
 }
 
 .header__drawer-contact {
@@ -272,7 +264,7 @@
   color: var(--green);
   line-height: calc(26/21);
   padding-block: rem(14) rem(13);
-  transition: color 0.3s;
+  transition: transform 0.3s;
 }
 
 .header__drawer-contact-en {
@@ -286,7 +278,19 @@
 
 
 @media (any-hover: hover) {
+  .header__logo:hover {
+    opacity: 0.8;
+  }
 
-  .header__nav-item a:hover,
-  .header__drawer-item a:hover {}
+  .header__nav-link:hover {
+    color: var(--purple);
+  }
+
+  .header__drawer-link:hover {
+    opacity: 0.8;
+  }
+
+  .header__drawer-contact:hover {
+    transform: scale(1.05);
+  }
 }

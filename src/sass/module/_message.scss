@@ -1,8 +1,6 @@
 @use "global" as *;
 
-.message {
-  padding-top: rem(35);
-}
+.message {}
 
 .message__inner {}
 
@@ -18,11 +16,16 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: rem(210);
-  height: 100%;
+  aspect-ratio: 325/307;
   background-image: url(../images/bg-logo.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+
+  @include mq("md") {
+    top: 67%;
+    width: rem(325);
+  }
 }
 
 .message__title {
@@ -32,6 +35,11 @@
   font-style: italic;
   color: var(--light-gray);
   line-height: calc(19/16);
+
+  @include mq("md") {
+    font-size: rem(29);
+    line-height: calc(34/29);
+  }
 }
 
 .message__text {
@@ -40,4 +48,10 @@
   font-weight: var(--font-bold);
   color: #626262;
   line-height: calc(37/16);
+
+  @include mq("md") {
+    margin-top: rem(50);
+    font-size: rem(26);
+    line-height: calc(58/26);
+  }
 }

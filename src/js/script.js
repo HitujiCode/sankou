@@ -1,12 +1,31 @@
 document.addEventListener("DOMContentLoaded", function () {
   // ===== ページトップへ戻る =====
   const topBtn = document.querySelector('.js-totop');
+
   if (topBtn) {
+    // 初期状態を非表示に
+    // topBtn.style.opacity = '0';
+    // topBtn.style.pointerEvents = 'none';
+    // topBtn.style.transition = 'opacity 0.3s ease-in-out, transform 0.3s ease-in-out';
+
+    // スクロールイベントの追加
+    // window.addEventListener('scroll', () => {
+    //   if (window.scrollY > 70) {
+    //     topBtn.style.opacity = '1';
+    //     topBtn.style.pointerEvents = 'auto';
+    //   } else {
+    //     topBtn.style.opacity = '0';
+    //     topBtn.style.pointerEvents = 'none';
+    //   }
+    // });
+
+    // クリックイベント
     topBtn.addEventListener('click', function (event) {
       event.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
 
   // ===== ハンバーガーメニュー =====
   // ===== 初期要素取得 =====
@@ -82,23 +101,19 @@ document.addEventListener("DOMContentLoaded", function () {
   initHamburgerMenu();
 
   // ===== ページ内リンクのスムーススクロール =====
-  // document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-  //   anchor.addEventListener("click", function (event) {
-  //     event.preventDefault();
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener("click", function (event) {
+      event.preventDefault();
+      const headerHeight = document.querySelector(".js-header").offsetHeight;
+      const href = anchor.getAttribute("href");
+      const target = href === "#" || href === "" ? document.documentElement : document.querySelector(href);
 
-  //     setTimeout(() => {
-  //       const headerHeight = document.querySelector(".js-header").offsetHeight;
-  //       const href = anchor.getAttribute("href");
-  //       const target = href === "#" || href === "" ? document.documentElement : document.querySelector(href);
-
-  //       if (target) {
-  //         const position = target.offsetTop - headerHeight;
-  //         window.scrollTo({ top: position, behavior: "smooth" });
-  //       }
-  //     }, 100); // 100ミリ秒（0.1秒）遅延
-  //   });
-  // });
-
+      if (target) {
+        const position = target.offsetTop - headerHeight;
+        window.scrollTo({ top: position, behavior: "smooth" });
+      }
+    });
+  });
 
   // ===== リクルートブロック =====
   setUpAccordion();

@@ -7,7 +7,7 @@
   text-align: center;
 
   @include mq("md") {
-    gap: rem(18);
+    gap: rem(12);
   }
 }
 
@@ -16,7 +16,7 @@
   gap: rem(2);
 
   @include mq("md") {
-    gap: rem(4);
+    gap: initial;
   }
 }
 
@@ -60,4 +60,15 @@
   font-family: var(--base-font);
   color: var(--black);
   line-height: calc(19/13);
+
+  @include mq("md") {
+    font-size: rem(18);
+    line-height: calc(34/18);
+  }
+}
+
+.section-title__ja--descender {
+  @include mq("md") {
+    margin-top: rem(-4);
+  }
 }

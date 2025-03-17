@@ -2,11 +2,6 @@
 
 .accent-img {
   overflow-x: clip;
-  margin-top: rem(-50);
-
-  @include mq("md") {
-    margin-top: rem(-50);
-  }
 }
 
 .accent-img__wrap {
@@ -21,6 +16,6 @@
   object-fit: cover;
 
   @include mq("md") {
-    aspect-ratio: 1440/799;
+    aspect-ratio: 1440/610;
   }
 }

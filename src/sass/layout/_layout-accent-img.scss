@@ -1,0 +1,9 @@
+@use "global" as *;
+
+.layout-accent-img {
+  margin-top: rem(-50);
+
+  @include mq("md") {
+    margin-top: rem(-58);
+  }
+}

@@ -1,12 +1,22 @@
 @use "global" as *;
 
 .form {
-  font-size: 16px;
+  font-size: rem(16);
+}
+
+.form__wrapper {
+  @include mq("md") {
+    padding-inline: rem(30);
+  }
 }
 
 .form__content {
   display: grid;
   gap: rem(16);
+
+  @include mq("md") {
+    gap: rem(26);
+  }
 }
 
 .form__wrap {
@@ -30,7 +40,12 @@
   font-size: rem(14);
   line-height: calc(32/14);
 
-  @include mq("md") {}
+  @include mq("md") {
+    position: relative;
+    top: calc(-6/16*1em);
+    font-size: rem(16);
+    line-height: calc(32/16);
+  }
 }
 
 .form__term:not(:first-of-type) {
@@ -38,6 +53,12 @@
 
   @include mq("md") {
     margin-top: initial;
+  }
+}
+
+.form__wrap:has(textarea) .form__term {
+  @include mq("md") {
+    top: 1px;
   }
 }
 
@@ -121,6 +142,12 @@
   font-size: rem(14);
   line-height: calc(28/14);
   text-align: center;
+
+  @include mq("md") {
+    margin-top: rem(30);
+    font-size: rem(16);
+    line-height: calc(28/16);
+  }
 }
 
 .form__acceptance input+span {
@@ -128,6 +155,7 @@
   display: inline-grid;
   place-items: center;
   grid-template-columns: auto 1fr;
+  gap: rem(2);
   cursor: pointer;
 }
 
@@ -140,6 +168,8 @@
   border: 1px solid;
   transition: border-color .3s;
   grid-area: 1 / 1 / 2 / 2;
+  position: relative;
+  top: 1px;
 }
 
 .form__acceptance input+span::after {
@@ -154,7 +184,11 @@
   grid-area: 1 / 1 / 2 / 2;
   position: relative;
   bottom: 1px;
+
   // bottom: 2px;
+  @include mq("md") {
+    bottom: initial;
+  }
 }
 
 .form__acceptance input:checked+span::before {}
@@ -170,10 +204,6 @@
   field-sizing: content;
   resize: none;
   padding: rem(17) rem(20);
-
-  @include mq("lg") {
-    min-height: rem(300);
-  }
 }
 
 .form__text {
@@ -212,7 +242,6 @@
 
   @include mq("md") {
     margin-top: rem(30);
-    width: min(100%, rem(600));
   }
 }
 
@@ -221,7 +250,6 @@
 
   @include mq("md") {
     width: fit-content;
-    min-width: rem(300);
   }
 }
 
@@ -243,13 +271,7 @@
   background-size: cover;
   transition: transform 0.3s ease;
 
-  @include mq("md") {
-    padding-block: rem(23) rem(22);
-    padding-inline: rem(30);
-    font-size: rem(20);
-    line-height: calc(30/20);
-    border-width: rem(3);
-  }
+  @include mq("md") {}
 }
 
 .form__back input {}
@@ -267,10 +289,6 @@
   aspect-ratio: 18/12;
   transform: scaleX(-1);
   transition: background-color 0.3s ease;
-
-  @include mq("md") {
-    left: rem(36);
-  }
 }
 
 .form__send::after {
@@ -285,10 +303,6 @@
   width: rem(17);
   aspect-ratio: 17/15;
   transition: transform 0.3s ease;
-
-  @include mq("md") {
-    right: rem(74);
-  }
 }
 
 .form__send input:disabled {
@@ -362,7 +376,7 @@
   line-height: calc(30/14);
 
   @include mq("md") {
-    margin-top: rem(54);
+    margin-top: rem(48);
     font-size: rem(16);
     line-height: calc(32/16);
   }
@@ -376,11 +390,11 @@
   font-size: rem(14);
   font-weight: var(--font-medium);
   line-height: calc(28/14);
+  height: rem(144);
 
   @include mq("md") {
-    margin-top: rem(30);
-    padding-block: rem(27);
-    padding-inline: rem(40);
+    margin-top: rem(26);
+    padding-block: rem(22);
     height: rem(187);
     font-size: rem(16);
     line-height: calc(30/16);
@@ -389,8 +403,12 @@
 
 .form__privacy-policy-inner {
   overflow-y: auto;
-  height: rem(112);
+  height: 100%;
   padding-inline: rem(24) rem(50);
+
+  @include mq("md") {
+    padding-inline: rem(42) rem(64);
+  }
 }
 
 .form__privacy-policy-read {}

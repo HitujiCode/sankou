@@ -4,6 +4,6 @@
   margin-top: rem(430);
 
   @include mq("md") {
-    margin-top: rem(56);
+    margin-top: initial;
   }
 }

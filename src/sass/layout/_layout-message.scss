@@ -1,0 +1,9 @@
+@use "global" as *;
+
+.layout-message {
+  margin-top: rem(35);
+
+  @include mq("md") {
+    margin-top: rem(75);
+  }
+}

@@ -7,8 +7,8 @@
   background-color: var(--white);
 
   @include mq("md") {
-    padding-block: rem(24) rem(64);
-    padding-inline: rem(35) rem(32);
+    padding-block: rem(24);
+    padding-inline: rem(35);
   }
 }
 
@@ -25,8 +25,8 @@
 
   @include mq("md") {
     grid-template-columns: 1fr rem(18);
-    font-size: rem(20);
-    line-height: calc(28/20);
+    font-size: rem(23);
+    line-height: calc(32/23);
   }
 }
 
@@ -61,6 +61,12 @@
 .recruit-block__inner {
   margin-top: rem(20);
   padding-bottom: rem(12);
+
+  @include mq("md") {
+    margin-top: rem(32);
+    padding-inline: rem(40);
+    padding-bottom: rem(40);
+  }
 }
 
 .recruit-block__detail {
@@ -68,6 +74,12 @@
   gap: rem(4);
   border-bottom: 1px solid var(--light-gray);
   padding: rem(16) rem(8);
+
+  @include mq("md") {
+    grid-template-columns: 1fr calc(715/900*100%);
+    gap: rem(20);
+    padding: rem(20) rem(25);
+  }
 }
 
 .recruit-block__detail-term {
@@ -75,10 +87,20 @@
   font-weight: var(--font-bold);
   line-height: calc(24/14);
   letter-spacing: 0.05em;
+
+  @include mq("md") {
+    font-size: rem(16);
+    line-height: calc(32/16);
+  }
 }
 
 .recruit-block__detail-desc {
   font-size: rem(14);
   line-height: calc(24/14);
   letter-spacing: 0.05em;
+
+  @include mq("md") {
+    font-size: rem(16);
+    line-height: calc(32/16);
+  }
 }

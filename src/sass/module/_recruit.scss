@@ -1,21 +1,37 @@
 @use "global" as *;
 
 .recruit {
-  --_mask-height: calc(40/430*100vw);
   position: relative;
   overflow-x: clip;
-  padding-block: rem(78) rem(103);
+}
+
+.recruit__wrapper {
+  --_mask-height: calc(40/430*100vw);
+  position: relative;
   padding-block: min(78/430*100vw, 100px) min(103/430*100vw, 100px);
   background-image: linear-gradient(#513298 0%, #5276bc 31.53%, #679ede 68.47%, #209ba5 100%);
-  mask-image: url(../images/bg-recruit-top-sp.svg), url(../images/bg-recruit-square.svg), url(../images/bg-recruit-bottom-sp.svg);
-  mask-size: 100% var(--_mask-height), 100% calc(100% - var(--_mask-height) * 2 + 2px), 100% var(--_mask-height);
+  mask-image:
+    url(../images/bg-recruit-top-sp.svg),
+    url(../images/bg-recruit-square.svg),
+    url(../images/bg-recruit-bottom-sp.svg);
+  mask-size:
+    100% var(--_mask-height),
+    100% calc(100% - var(--_mask-height) * 2 + 2px),
+    100% var(--_mask-height);
   mask-repeat: no-repeat;
   mask-position: 0 0, 100% calc(var(--_mask-height) - 1px), 100% 100%;
 
   @include mq("md") {
     --_mask-height: 120px;
-    mask-image: url(../images/bg-recruit-top.svg), url(../images/bg-recruit-square.svg), url(../images/bg-recruit-bottom.svg);
-    mask-size: 100% var(--_mask-height), 100% calc(100% - var(--_mask-height) * 2), 100% var(--_mask-height);
+    mask-image:
+      url(../images/bg-recruit-top.svg),
+      url(../images/bg-recruit-square.svg),
+      url(../images/bg-recruit-bottom.svg);
+    mask-size:
+      100% var(--_mask-height),
+      100% calc(100% - var(--_mask-height) * 2 + 2px),
+      100% var(--_mask-height);
+    padding-block: clamp(120px, 120/1440*100vw, 200px) clamp(186px, 186/1440*100vw, 260px);
   }
 }
 
@@ -24,7 +40,11 @@
   bottom: rem(5);
   left: rem(36);
   opacity: 0.16;
-  // z-index: 1;
+
+  @include mq("md") {
+    bottom: rem(-22);
+    left: rem(-22);
+  }
 }
 
 .recruit__inner.inner {}
@@ -42,8 +62,35 @@
   gap: rem(23);
 
   @include mq("md") {
-    margin-top: rem(64);
+    margin-top: rem(60);
+    gap: rem(25);
   }
 }
 
 .recruit__item {}
+
+.recruit__img {
+  position: absolute;
+  bottom: rem(40);
+  left: 50%;
+  display: block;
+  width: max(100%, 640px);
+  transform: translate(-50%, 100%);
+  z-index: -1;
+
+  @include mq("md") {
+    bottom: 60px;
+    width: max(100%, 1440px);
+  }
+}
+
+.recruit__img img {
+  aspect-ratio: 640/375;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  @include mq("md") {
+    aspect-ratio: 1440/610;
+  }
+}

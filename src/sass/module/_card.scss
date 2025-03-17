@@ -2,18 +2,25 @@
 
 .card {
   position: relative;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: rem(25);
   background-color: var(--white);
   border-radius: rem(20);
-  padding-block: rem(38) rem(32);
+  padding-block: rem(42) rem(22);
   padding-inline: rem(29);
+  height: 100%;
+
+  @include mq("md") {
+    padding-inline: rem(23);
+    gap: rem(20);
+  }
 }
 
 .card::before {
   content: counter(serviceNum, decimal-leading-zero);
   position: absolute;
-  top: rem(-52);
+  top: rem(-53);
   left: rem(-15);
   font-size: rem(80);
   font-weight: var(--font-semi-bold);
@@ -22,6 +29,10 @@
   color: transparent;
   line-height: calc(97/80);
   -webkit-text-stroke: 1px var(--black);
+
+  @include mq("md") {
+    left: rem(-10);
+  }
 }
 
 .card__title {
@@ -60,6 +71,9 @@
   letter-spacing: 0.05em;
 
   @include mq("md") {
-    font-size: rem(16);
+    flex: 1;
+    padding-inline: rem(8);
+    font-size: rem(15);
+    line-height: calc(32/15);
   }
 }

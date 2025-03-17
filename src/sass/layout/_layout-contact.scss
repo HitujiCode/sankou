@@ -2,8 +2,10 @@
 
 .layout-contact {
   margin-top: rem(-50);
+  margin-top: rem(272);
 
   @include mq("md") {
-    margin-top: rem(-70);
+    margin-top: rem(452);
+    margin-top: clamp(rem(452), 452/1440*100vw, 800px);
   }
 }
