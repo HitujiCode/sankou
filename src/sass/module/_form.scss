@@ -16,16 +16,17 @@
 
   @include mq("md") {
     gap: rem(26);
+    max-width: rem(800);
   }
 }
 
 .form__wrap {
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: rem(2);
 
   @include mq("md") {
-    grid-template-columns: calc(270/1000*100%) 1fr;
+    grid-template-columns: 13em 1fr;
+    gap: rem(20);
   }
 }
 
@@ -89,6 +90,7 @@
   line-height: calc(32/16);
 
   @include mq("lg") {
+    width: min(100%, rem(290));
     padding-inline: rem(20);
   }
 }
@@ -97,12 +99,15 @@
   @extend %base-input;
 }
 
-.form__input:has([data-name="your-date"]) input {
-  width: rem(156);
+.form__input:has([data-name="your-name"]) input {
+  @include mq("md") {
+    width: min(100%, rem(340));
+  }
+}
 
+.form__input:has([data-name="your-address"]) input {
   @include mq("lg") {
-    width: rem(175);
-    padding-inline: rem(20)
+    min-width: 100%;
   }
 }
 
@@ -199,11 +204,11 @@
 
 .form__input textarea {
   @extend %base-input;
-  min-height: rem(205);
+  height: rem(205);
   width: 100%;
-  field-sizing: content;
+  min-width: 100%;
   resize: none;
-  padding: rem(17) rem(20);
+  box-sizing: border-box;
 }
 
 .form__text {
@@ -264,7 +269,7 @@
   color: var(--white);
   line-height: calc(34/17);
   text-align: left;
-  border-radius: calc(1px/0);
+  border-radius: 100vmax;
   background-image: var(--gradient-main);
   background-repeat: no-repeat;
   background-position: center;
@@ -287,7 +292,6 @@
   mask-size: contain;
   width: rem(18);
   aspect-ratio: 18/12;
-  transform: scaleX(-1);
   transition: background-color 0.3s ease;
 }
 
@@ -325,9 +329,8 @@
 .form__input [type=checkbox]:focus-visible,
 .form__input select:focus-visible,
 .form__input textarea:focus-visible {
-  border-color: color-mix(in srgb, var(--blue) 50%, var(--white));
-  background-color: var(--white);
-  filter: drop-shadow(0 0 rem(5) color-mix(in srgb, var(--blue) 50%, var(--white)));
+  border-color: color-mix(in srgb, var(--purple) 50%, var(--white));
+  filter: drop-shadow(0 0 rem(5) color-mix(in srgb, var(--purple) 50%, var(--white)));
 }
 
 .wpcf7-list-item {

@@ -42,9 +42,6 @@
   color: var(--purple);
   line-height: calc(49/25);
   text-align: center;
-  text-decoration: underline;
-  text-underline-offset: calc(12/26*1em);
-  text-decoration-thickness: rem(2);
 
   @include mq("md") {
     font-size: rem(26);
@@ -60,8 +57,9 @@
 }
 
 .card__title span {
-  // box-decoration-break: clone;
-  // border-bottom: rem(2) solid;
+  text-decoration: underline;
+  text-underline-offset: calc(12/26*1em);
+  text-decoration-thickness: rem(2);
 }
 
 .card__text {

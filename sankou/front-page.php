@@ -57,17 +57,17 @@
           <?php
           $serviceItem = [
             [
-              'title' => '一般貨物運送<br>（全国へ対応）',
+              'title' => '<span class="text-block">一般貨物運送</span><span class="text-block">（全国へ対応）</span>',
               'text' => '01のテキストが入ります。一般貨物運送業を中心に、全国の運送・配送作業対応しております。当社ならではのネットワークを活かし、運送に付帯する業務も全国対応致します。近距離、中距離、長距離、貸切輸送、積合せ輸送等、幅広いお客様のニーズにお応えし、確実・安全な輸送および物流プランをご提供いたします。',
               'modifier' => 'card__title--small'
             ],
             [
-              'title' => '様々な貨物に<br class="sp-only">大口まで対応',
+              'title' => '<span class="text-block">様々な貨物に<span class="text-block">大口まで対応</span></span>',
               'text' => '02のテキストが入ります。現場から現場への運搬、鉄骨、プレカット材、コンクリートなどの建設資材、建具などの内装部材やユニットバス部材などの住宅資材等のお荷物を松山市を拠点として配送致します。愛媛県外のオフィスの移転作業(引越し)等もお任せ下さい。弊社で所有している車両に対応するお荷物であれば可能な限り対応いたします。',
               'modifier' => 'card__title--small'
             ],
             [
-              'title' => '安心安全への取組み',
+              'title' => '<span class="text-block">安心安全への取組み</span>',
               'text' => '03のテキストが入ります。提供しているのは安心安全、スピーディーかつ礼節のある物流サービスです。出発・終了点呼、ドライバーの体調や飲酒の有無はもちろん、関わる皆様へのマナーや身だしなみの確認・測定を行なっております。',
             ]
           ]; ?>
@@ -538,18 +538,18 @@
               <li class="recruit__item">
                 <details class="recruit-block js-details">
                   <summary class="recruit-block__title js-summary"><?php echo wp_kses_post($item['job']); ?></summary>
-                  <dl class="recruit-block__content js-content">
-                    <div class="recruit-block__inner">
+                  <div class="recruit-block__content js-content">
+                    <ul class="recruit-block__list">
                       <?php foreach ($item['details'] as $detail) : ?>
                         <?php if (!empty($detail['term']) && !empty($detail['desc'])) : ?>
-                          <div class="recruit-block__detail">
-                            <dt class="recruit-block__detail-term"><?php echo wp_kses_post($detail['term']); ?></dt>
-                            <dd class="recruit-block__detail-desc"><?php echo wp_kses_post($detail['desc']); ?></dd>
-                          </div>
+                          <li class="recruit-block__detail">
+                            <p class="recruit-block__detail-term"><?php echo wp_kses_post($detail['term']); ?></p>
+                            <p class="recruit-block__detail-desc"><?php echo wp_kses_post($detail['desc']); ?></p>
+                          </li>
                         <?php endif; ?>
                       <?php endforeach; ?>
-                    </div>
-                  </dl>
+                    </ul>
+                  </div>
                 </details>
               </li>
             <?php endforeach; ?>

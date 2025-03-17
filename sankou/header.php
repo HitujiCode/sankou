@@ -16,6 +16,8 @@
   <meta property="og:description" content="">
   <meta property="og:site_name" content="<?php bloginfo('name'); ?>">
   <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preload" href="<?php img_path('mv.webp'); ?>" as="image">
+  <link rel="preload" href="<?php img_path('catchcopy.svg'); ?>" as="image">
   <!-- 404ページの自動遷移 -->
   <?php if (is_404()) : ?>
     <meta http-equiv="refresh" content=" 5; url=<?php echo esc_url(home_url("/")); ?>">

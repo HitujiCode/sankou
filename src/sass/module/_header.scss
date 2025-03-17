@@ -13,12 +13,12 @@
   position: absolute;
   z-index: -1;
   inset: 0;
-  background-image: var(--gradient-header);
   opacity: 0;
+  background-image: var(--gradient-header);
   transition: opacity 0.3s ease;
 }
 
-.header:has(.is-open)::before {
+.header.is-scrolled::before {
   opacity: 1;
 }
 
@@ -79,11 +79,12 @@
 
 .header__logo-company {
   display: block;
-  width: rem(154);
+  height: rem(18);
 
   @include mq("md") {
     padding-block: rem(13);
     width: rem(180);
+    height: auto;
   }
 
   @include mq("lg") {
@@ -165,7 +166,7 @@
   display: block;
   width: 100%;
   height: rem(2);
-  background-color: var(--green);
+  background-color: var(--blue);
   position: absolute;
 }
 
@@ -203,7 +204,7 @@
   visibility: hidden;
   opacity: 0;
   z-index: 1;
-  background-image: linear-gradient(to bottom, #13687e, #209BA5);
+  background-image: linear-gradient(to bottom, #104696, #0676B6);
   transition: visibility 0.5s, opacity 0.5s;
   display: grid;
   align-items: center;
@@ -247,7 +248,7 @@
   font-weight: var(--font-semi-bold);
   font-family: var(--en-font);
   font-style: italic;
-  color: var(--green);
+  color: #3289D3;
   line-height: calc(19/16);
   transition: mix-blend-mode 0.3s;
 }
@@ -255,13 +256,13 @@
 .header__drawer-contact {
   display: grid;
   background-color: var(--white);
-  border-radius: calc(1px/0);
+  border-radius: 100vmax;
   width: min(100%, rem(254));
   margin-top: rem(18);
   margin-inline: auto;
   font-size: rem(21);
   font-weight: var(--font-bold);
-  color: var(--green);
+  color: var(--blue);
   line-height: calc(26/21);
   padding-block: rem(14) rem(13);
   transition: transform 0.3s;

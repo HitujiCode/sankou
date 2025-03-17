@@ -61,9 +61,9 @@ const wpThemeCopy = () => {
 };
 
 // fontのコピー
-const fontCopy = () => {
-  return src(srcPath.font).pipe(dest(destPath.font));
-};
+// const fontCopy = () => {
+//   return src(srcPath.font).pipe(dest(destPath.font));
+// };
 
 const browsers = [
   "last 2 versions",
@@ -194,14 +194,14 @@ const watchFiles = () => {
   watch(srcPath.css, series(cssSass, browserSyncReload));
   watch(srcPath.js, series(jsMinify, browserSyncReload));
   watch(`${srcPath.img}/**/*`, series(imgImageminAndWebp, browserSyncReload));
-  watch(srcPath.font, series(fontCopy, browserSyncReload));
+  // watch(srcPath.font, series(fontCopy, browserSyncReload));
   watch(srcPath.php, browserSyncReload);
   watch(srcPath.wp, series(wpThemeCopy, browserSyncReload));
 };
 
 // 開発用タスク
 exports.default = series(
-  series(cssSass, jsMinify, imgImageminAndWebp, wpThemeCopy, fontCopy),
+  series(cssSass, jsMinify, imgImageminAndWebp, wpThemeCopy),
   parallel(watchFiles, browserSyncFunc)
 );
 
@@ -212,5 +212,4 @@ exports.build = series(
   jsMinify,
   imgImageminAndWebp,
   wpThemeCopy,
-  fontCopy
 );

@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function openHamburgerMenu(elements) {
-    const { hamburger, drawer } = elements;
+    const { hamburger, drawer, header } = elements;
 
     document.body.classList.add("is-noscroll");
     hamburger.classList.add("is-open");
@@ -67,6 +67,13 @@ document.addEventListener("DOMContentLoaded", function () {
     // inert 属性を解除
     drawer.removeAttribute("inert");
     drawer.setAttribute("aria-hidden", "false");
+
+    // top0でないときのみヘッダーにクラスを追加
+    if (window.scrollY > 0) {
+      header.classList.add("is-scrolled");
+    } else {
+      header.classList.remove("is-scrolled");
+    }
   }
 
   function initHamburgerMenu() {
