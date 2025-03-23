@@ -26,6 +26,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // ===== スクロールしたらヘッダーにクラス付与 =====
+  document.addEventListener('scroll', function () {
+    const header = document.querySelector('.js-header');
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    if (scrollTop > 0) {
+      header.classList.add('is-scrolled');
+    } else {
+      header.classList.remove('is-scrolled');
+    }
+  });
+
 
   // ===== ハンバーガーメニュー =====
   // ===== 初期要素取得 =====

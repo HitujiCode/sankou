@@ -14,7 +14,8 @@
   z-index: -1;
   inset: 0;
   opacity: 0;
-  background-image: var(--gradient-header);
+  // background-image: var(--gradient-header);
+  background-image: linear-gradient(45deg, #F0ECFA, #EFF7FF);
   transition: opacity 0.3s ease;
 }
 

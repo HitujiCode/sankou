@@ -57,7 +57,7 @@
           <?php
           $serviceItem = [
             [
-              'title' => '<span class="text-block">一般貨物運送</span><span class="text-block">（全国へ対応）</span>',
+              'title' => '<span class="text-block">一般貨物運送</span><br><span class="text-block">(全国へ対応)</span>',
               'text' => '01のテキストが入ります。一般貨物運送業を中心に、全国の運送・配送作業対応しております。当社ならではのネットワークを活かし、運送に付帯する業務も全国対応致します。近距離、中距離、長距離、貸切輸送、積合せ輸送等、幅広いお客様のニーズにお応えし、確実・安全な輸送および物流プランをご提供いたします。',
               'modifier' => 'card__title--small'
             ],
@@ -114,7 +114,7 @@
               ],
               [
                 'term' => '所在地',
-                'desc' => '〒791-8013 愛媛県松山市山越1丁目8番10号<br class="sp-only"><a href="https://maps.app.goo.gl/36WzBohMQD5giYo38" target="_blank" rel="noreferrer">GoogleMapで見る</a><br>Tel. 089-925-1014<br>Fax. 089-926-0888',
+                'desc' => '〒791-8013 愛媛県松山市山越町416番地1<br class="sp-only"><a href="https://maps.app.goo.gl/mE4pspHtF5PdyTAK7" target="_blank" rel="noreferrer">GoogleMapで見る</a><br>Tel. 089-925-1014<br>Fax. 089-926-0888',
               ],
               [
                 'term' => '代表取締役社長',
@@ -466,15 +466,16 @@
         <div class="en-accent" aria-hidden="true">Recruit</div>
       </div>
       <div class="recruit__inner inner">
-        <div class="recruit__container">
-          <div class="recruit__title">
-            <div class="section-title">
-              <div class="section-title__en section-title__en--screen" style="--_width-sp: 156; --_width-pc: 246;">
-                <img src="<?php img_path('title-recruit.svg'); ?>" alt="Recruit" width="156" height="36" loading="lazy">
-              </div>
-              <h2 class="section-title__ja">採用情報</h2>
+        <div class="recruit__title">
+          <div class="section-title">
+            <div class="section-title__en section-title__en--screen" style="--_width-sp: 156; --_width-pc: 246;">
+              <img src="<?php img_path('title-recruit.svg'); ?>" alt="Recruit" width="156" height="36" loading="lazy">
             </div>
+            <h2 class="section-title__ja">採用情報</h2>
           </div>
+        </div>
+        <div class="recruit__container">
+
           <?php
           $recruitItem = [
             [

@@ -160,14 +160,13 @@
   display: inline-grid;
   place-items: center;
   grid-template-columns: auto 1fr;
-  gap: rem(2);
+  gap: 0.3em;
   cursor: pointer;
 }
 
 .form__acceptance input+span::before {
   content: "";
-  width: 0.6em;
-  // width: 1em;
+  width: 1em;
   aspect-ratio: 1/1;
   display: block;
   border: 1px solid;
@@ -190,9 +189,8 @@
   position: relative;
   bottom: 1px;
 
-  // bottom: 2px;
   @include mq("md") {
-    bottom: initial;
+    // bottom: initial;
   }
 }
 
@@ -208,7 +206,6 @@
   width: 100%;
   min-width: 100%;
   resize: none;
-  box-sizing: border-box;
 }
 
 .form__text {
@@ -407,10 +404,10 @@
 .form__privacy-policy-inner {
   overflow-y: auto;
   height: 100%;
-  padding-inline: rem(24) rem(50);
+  padding-inline: rem(24);
 
   @include mq("md") {
-    padding-inline: rem(42) rem(64);
+    padding-inline: rem(42);
   }
 }
 

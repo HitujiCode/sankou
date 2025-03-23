@@ -6,7 +6,6 @@
   font-family: var(--en-font);
   color: var(--white);
   line-height: calc(117/119);
-  text-transform: uppercase;
 
   @include mq("md") {
     font-size: rem(192);

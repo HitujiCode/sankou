@@ -46,12 +46,12 @@
   }
 }
 
-.section-title__en--screen {
-  mix-blend-mode: screen;
-}
-
 .section-title__en img {
   object-fit: contain;
+}
+
+.section-title__en--screen {
+  mix-blend-mode: screen;
 }
 
 .section-title__ja {

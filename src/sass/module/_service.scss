@@ -14,7 +14,8 @@
   position: absolute;
   top: 27.5%;
   left: rem(-16);
-  writing-mode: sideways-lr;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
   mix-blend-mode: soft-light;
 
   @include mq("md") {
